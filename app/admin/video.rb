@@ -2,7 +2,8 @@ ActiveAdmin.register Video do
   member_action :create, :method => :put do
     @video = Video.new
     @video.upload(params[:video])
-    render :text => "File has been uploaded successfully"
+    flash.now[:notice] = "File has been uploaded successfully"
+    render :action => 'index'
   end
 
   form do |f|
